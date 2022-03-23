@@ -1,2 +1,2 @@
 # CrudComJavaPoo
-Crud Com Java 
+Projeto desenvolvido na cadeira de POO 
