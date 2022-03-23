@@ -56,6 +56,26 @@ public class MatriculaDao  extends ConnectionDb{
         return matriculas; 
     }
     
+    
+    public Integer verificarSeExistePorIdDoALuno(Integer idAluno){
+        Integer contagem = 0;
+         try {
+              PreparedStatement stmt = getConexao().prepareStatement("SELECT COUNT(*) AS countRow FROM matricula WHERE id_alunoFk = ?");
+             stmt.setInt(1, idAluno);
+             ResultSet resultado = stmt.executeQuery();
+             if(resultado.next()){
+                 contagem =  resultado.getInt("countRow");
+             }else{
+                 contagem = 0;
+             }
+             
+        } catch (Exception e) {
+            System.out.println(e);
+           contagem = 0;
+             
+        }
+         return contagem;
+    }
     public List<Matricula> mostrarMatriculaIndividual(Integer idMatricula){
         
         List<Matricula> matriculas = new ArrayList<Matricula>();

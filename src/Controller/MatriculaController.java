@@ -12,7 +12,7 @@ public class MatriculaController {
         
       Integer resultadoAluno =  DaoFactory.getAlunoDao().verificarSeExiste(matricula.getAluno().getId());   
       
-      if(resultadoAluno == 1){
+      if(resultadoAluno > 0){
          DaoFactory.getMatriculaDao().criarTurma(matricula);
          resultadoCadastro = 1;
       }else{
@@ -25,8 +25,13 @@ public class MatriculaController {
     public List<Matricula> verMatriculasPorTurma(Integer idTurma){
 
             return DaoFactory.getMatriculaDao().mostrarMatriculaPorTurma(idTurma);
-      
      
+    }
+    
+    public Integer verMatriculaPorIdDoAluno(Integer idAluno){
+        
+        return DaoFactory.getMatriculaDao().verificarSeExistePorIdDoALuno(idAluno);
+        
     }
     
     public List<Matricula> verMatriculaIndividual(Integer idMatricula){

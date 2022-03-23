@@ -67,7 +67,7 @@ public class AlunoView {
         aluno.setBairro(bairroAluno);
         System.out.println("Digite o Cep "  + ((update)? fraseNovo : ""));
         String cepAluno = this.jIn.nextLine();
-        aluno.setBairro(cepAluno);
+        aluno.setCep(cepAluno);
         
         
        return aluno;
@@ -111,10 +111,16 @@ public class AlunoView {
     
     public Integer deletarAluno(){
         System.out.println("Digite o id do Aluno: ");
-         Integer opcaoEscolhida  = Integer.parseInt(this.jIn.nextLine());
+        Integer opcaoEscolhida  = Integer.parseInt(this.jIn.nextLine());
          
-         
-        alunoController.deletarAluno(opcaoEscolhida);
+  
+        Integer resultado  = alunoController.deletarAluno(opcaoEscolhida);
+        
+        if(resultado == 1){
+            System.out.println("Aluno deleteado \n\n");
+        }else{
+            System.out.println(" \n Não foi possível deletar o aluno \n Aluno com matricula ativa");
+        }
         return 1;
     }  
     

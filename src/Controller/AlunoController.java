@@ -20,8 +20,17 @@ public class AlunoController {
     }
     
     public Integer deletarAluno(Integer id){
-        DaoFactory.getAlunoDao().deletarAluno(id);
-        return id;
+       Integer resposta;
+       
+        Integer resultado = DaoFactory.getMatriculaDao().verificarSeExistePorIdDoALuno(id);
+        if(resultado > 0){
+            resposta = 0; 
+        }else{
+            DaoFactory.getAlunoDao().deletarAluno(id);
+            resposta = 1;
+        }
+       
+        return resposta;
     }
     
     public Integer atualizarAluno(Aluno aluno, Integer id){

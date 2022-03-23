@@ -21,8 +21,8 @@ public class AlunoDao extends ConnectionDb{
         try {
             
             PreparedStatement stmt = getConexao().prepareStatement("INSERT INTO aluno  "
-                    + "(nome,sexo, nascimento, email,  telefone, cidade, logradouro, numero, bairro, cep, cpf)"
-                    + " VALUES (?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?)");
+                    + "(nome,sexo, email, nascimento,  telefone, cidade, logradouro, numero, bairro, cep, cpf) "
+                    + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             
             stmt.setString(1, aluno.getNome());
             stmt.setString(2, aluno.getSexo());
@@ -123,7 +123,7 @@ public class AlunoDao extends ConnectionDb{
     public Integer verificarSeExiste(Integer idAluno){
         Integer contagem = 0;
         try {
-            PreparedStatement stmt = getConexao().prepareStatement("SELECT COUNT(*) AS countRow FROM turma WHERE id_turmaPk = ?");
+            PreparedStatement stmt = getConexao().prepareStatement("SELECT COUNT(*) AS countRow FROM aluno WHERE id_alunoPk = ?");
              stmt.setInt(1, idAluno);
              ResultSet resultado = stmt.executeQuery();
              
